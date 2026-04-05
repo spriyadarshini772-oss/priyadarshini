@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyadarshini S — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1A1A2E;
+    --ink-light: #4A4A6A;
+    --accent: #2D6A9F;
+    --accent-light: #EAF2FA;
+    --positive: #1D7A5F;
+    --negative: #C0392B;
+    --surface: #FAFAFA;
+    --border: #E8E8F0;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--ink-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    max-width: 800px; margin: 0 auto;
+    padding: 80px 2rem 60px;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--accent); background: var(--accent-light);
+    padding: 4px 12px; border-radius: 20px;
+    margin-bottom: 24px; text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(38px, 6vw, 58px);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p {
+    font-size: 17px; color: var(--ink-light);
+    max-width: 580px; margin-bottom: 32px;
+    font-weight: 300; line-height: 1.8;
+  }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: white;
+    padding: 10px 22px; border-radius: 6px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border); color: var(--ink-light);
+    padding: 10px 22px; border-radius: 6px;
+    font-size: 14px; font-weight: 400; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    background: white;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* TOOLS STRIP */
+  .tools-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: white;
+    padding: 18px 2rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; flex-wrap: wrap;
+  }
+  .tools-label { font-size: 12px; color: var(--ink-light); margin-right: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .tool-chip {
+    font-size: 13px; font-weight: 500;
+    padding: 5px 14px; border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--ink-light); background: var(--surface);
+  }
+
+  /* SECTION */
+  section { max-width: 800px; margin: 0 auto; padding: 64px 2rem; }
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px; color: var(--ink); margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* PROJECT CARD */
+  .project-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .project-card-header {
+    background: var(--ink);
+    padding: 28px 32px;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+  }
+  .project-card-header h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: white; font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .project-card-header p { font-size: 14px; color: #9BA3C0; font-weight: 300; max-width: 460px; }
+  .project-badge {
+    flex-shrink: 0;
+    font-size: 11px; font-weight: 500;
+    padding: 4px 12px; border-radius: 20px;
+    background: rgba(255,255,255,0.12); color: #C8D0E8;
+    border: 1px solid rgba(255,255,255,0.15);
+    white-space: nowrap; margin-top: 2px;
+  }
+
+  .project-body { padding: 28px 32px; }
+
+  /* PIPELINE */
+  .pipeline { display: flex; gap: 0; margin-bottom: 28px; flex-wrap: wrap; }
+  .pipeline-step {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: var(--ink-light);
+  }
+  .pipeline-step .step-num {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--accent-light); color: var(--accent);
+    font-size: 11px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .pipeline-arrow { color: var(--border); margin: 0 10px; font-size: 16px; }
+
+  /* FINDINGS */
+  .findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .finding {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .finding-num { font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 4px; }
+  .finding-num.pos { color: var(--positive); }
+  .finding-num.neg { color: var(--negative); }
+  .finding-num.neu { color: var(--accent); }
+  .finding-label { font-size: 12px; color: var(--ink-light); line-height: 1.4; }
+
+  /* INSIGHT LIST */
+  .insight-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .insight-list li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 14px; color: var(--ink-light); line-height: 1.6;
+  }
+  .insight-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0; margin-top: 8px;
+  }
+
+  /* TOOL TAGS */
+  .tool-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-tag {
+    font-size: 12px; padding: 4px 12px; border-radius: 4px;
+    background: var(--accent-light); color: var(--accent);
+    font-weight: 500; border: 1px solid #C5DCF0;
+  }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .about-text p { font-size: 15px; color: var(--ink-light); line-height: 1.8; margin-bottom: 16px; font-weight: 300; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .skill-item {
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px; font-weight: 500; color: var(--ink);
+  }
+  .skill-item span { display: block; font-size: 11px; color: var(--ink-light); font-weight: 400; margin-top: 2px; }
+
+  /* CONTACT */
+  .contact-card {
+    background: var(--ink); border-radius: 12px;
+    padding: 48px; text-align: center;
+  }
+  .contact-card h2 { font-family: 'DM Serif Display', serif; font-size: 30px; color: white; margin-bottom: 12px; }
+  .contact-card p { font-size: 15px; color: #8A92B0; margin-bottom: 28px; font-weight: 300; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 24px;
+    font-size: 13px; color: var(--ink-light);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .project-card-header { flex-direction: column; }
+    .pipeline { gap: 6px; }
+    .pipeline-arrow { display: none; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: fadeUp 0.5s ease both; }
+  .hero > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero > *:nth-child(4) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="#">Priyadarshini S</a>
+  <ul class="nav-links">
+    <li><a href="#project">Project</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Data Analyst Portfolio</div>
+  <h1>Turning raw data into <em>clear decisions</em></h1>
+  <p>I work across Excel, SQL, Python, and Power BI to find the story hidden inside data — and communicate it in a way that drives action.</p>
+  <div class="hero-cta">
+    <a href="#project" class="btn-primary">View my project</a>
+    <a href="https://www.linkedin.com/in/priyadarshini-data-analyst" target="_blank" class="btn-outline">
+      LinkedIn ↗
+    </a>
+  </div>
+</div>
+
+<div class="tools-strip">
+  <span class="tools-label">Tools</span>
+  <span class="tool-chip">Excel</span>
+  <span class="tool-chip">SQL</span>
+  <span class="tool-chip">Python · Pandas</span>
+  <span class="tool-chip">Matplotlib</span>
+  <span class="tool-chip">Power BI</span>
+</div>
+
+<section id="project">
+  <div class="section-label">Featured project</div>
+  <div class="section-title">Retail Sales Intelligence</div>
+
+  <div class="project-card">
+    <div class="project-card-header">
+      <div>
+        <h3>Superstore Sales Analysis</h3>
+        <p>End-to-end analysis of 9,994 retail orders across 4 years — uncovering where the business makes money, where it loses it, and why.</p>
+      </div>
+      <div class="project-badge">2014 – 2017</div>
+    </div>
+
+    <div class="project-body">
+
+      <div class="pipeline">
+        <div class="pipeline-step"><div class="step-num">1</div> Excel</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><div class="step-num">2</div> SQL</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><div class="step-num">3</div> Python</div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><div class="step-num">4</div> Power BI</div>
+      </div>
+
+      <div class="findings">
+        <div class="finding">
+          <div class="finding-num neg">−$17.7K</div>
+          <div class="finding-label">Profit lost on Tables despite $207K in sales</div>
+        </div>
+        <div class="finding">
+          <div class="finding-num pos">37%</div>
+          <div class="finding-label">Profit margin on Copiers — the hidden champion</div>
+        </div>
+        <div class="finding">
+          <div class="finding-num neu">$118K</div>
+          <div class="finding-label">November 2017 — peak month in 4 years of data</div>
+        </div>
+        <div class="finding">
+          <div class="finding-num neg">8%</div>
+          <div class="finding-label">Central region profit margin — weakest of all regions</div>
+        </div>
+      </div>
+
+      <ul class="insight-list">
+        <li><div class="insight-dot"></div>Furniture is the top revenue category but contains the most loss-making sub-categories. Tables and Bookcases both generate negative profit despite strong sales figures.</li>
+        <li><div class="insight-dot"></div>Discounting is the root cause — Tables offered at 40–60% discount generate an average loss of $55 per order, while the same product at under 10% discount is profitable.</li>
+        <li><div class="insight-dot"></div>November is consistently the peak month every year, with 2017 reaching $118K — nearly 50% higher than previous November peaks, indicating strong business growth.</li>
+        <li><div class="insight-dot"></div>Central region has the weakest profit margin at ~8% despite being the 3rd highest in total sales, suggesting a less profitable product mix or heavier discounting.</li>
+      </ul>
+
+      <hr class="divider" style="margin-bottom: 20px;">
+
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div class="tool-tags">
+          <span class="tool-tag">Excel Pivot Tables</span>
+          <span class="tool-tag">SQLite</span>
+          <span class="tool-tag">Pandas EDA</span>
+          <span class="tool-tag">Matplotlib</span>
+          <span class="tool-tag">Power BI Dashboard</span>
+        </div>
+        <a href="https://www.kaggle.com" target="_blank" class="btn-outline" style="font-size:13px; padding: 7px 16px;">View notebook ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="section-title">Who I am</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm Priyadarshini, a data analyst who enjoys the full journey from messy raw data to a clean, actionable insight. I believe good analysis is only half the job — communicating it clearly is the other half.</p>
+      <p>This project taught me to validate findings across multiple tools, ask the right questions when the data surprises me, and tell a cohesive story from spreadsheet to dashboard.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">Excel <span>Pivot tables, formulas</span></div>
+      <div class="skill-item">SQL <span>SQLite, aggregations</span></div>
+      <div class="skill-item">Python <span>Pandas, Matplotlib</span></div>
+      <div class="skill-item">Power BI <span>Dashboards, DAX</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="contact">
+  <div class="contact-card">
+    <h2>Let's connect</h2>
+    <p>Open to data analyst roles and freelance projects. Feel free to reach out on LinkedIn.</p>
+    <a href="https://www.linkedin.com/in/priyadarshini-data-analyst" target="_blank" class="btn-primary">
+      Connect on LinkedIn ↗
+    </a>
+  </div>
+</section>
+
+<footer>
+  Built by Priyadarshini S · 2025
+</footer>
+
+</body>
+</html>
